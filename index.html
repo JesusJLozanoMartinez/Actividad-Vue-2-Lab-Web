@@ -1,0 +1,66 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad Vue</title>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="Problema1">
+        <div>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" v-bind:class="active" v-on:click.prevent>
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link active" href="#" v-on:click="Activar('home')">Home</a>
+                        <a class="nav-item nav-link" href="#" v-on:click="Activar('projects')">Projects</a>
+                        <a class="nav-item nav-link" href="#" v-on:click="Activar('services')">Services</a>
+                        <a class="nav-item nav-link" href="#" v-on:click="Activar('contact')">Contact</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col-2 offset-5">
+                <p>You chose <b>{{active}}</b></p>
+            </div>
+        </div>
+
+        <home v-if="active == 'home'">
+            <div class="row">
+                <div class="col-6 offset-4">
+                    <p>Contenido de eleccion del alumno en pagina de home</p>
+                </div>
+            </div>
+        </home>
+
+        <projects v-if="active == 'projects'">
+            <a href="./project.html" class="btn btn-dark" role="button">Link Projects</a>
+        </projects>
+    
+        <services v-if="active == 'services'">
+            <a href="./services.html" class="btn btn-dark" role="button">Link Servicios</a>
+        </services>
+    </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script>
+    var demo = new Vue({
+            el: '#Problema1',
+        data: {
+                active: 'home'
+        },
+        methods: {
+                Activar: function(item){
+                        this.active = item;
+                }
+        }
+});
+</script>    
+</body>
+</html>

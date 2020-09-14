@@ -1,0 +1,83 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad Vue</title>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="./index.html">Home</a>
+                    <a class="nav-item nav-link" href="./project.html">Projects</a>
+                    <a class="nav-item nav-link" href="./services.html">Services</a>
+                    <a class="nav-item nav-link" href="#">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+<section id="Problema4" class="container services">
+    <div class="list-group">
+      <a href="#" @click="seleccionar(0)" class="list-group-item" v-bind:class="{active: servicios[0].isActive}">{{servicios[0].name}} - {{servicios[0].cost}}</a>
+      <a href="#" @click="seleccionar(1)" class="list-group-item" v-bind:class="{active: servicios[1].isActive}">{{servicios[1].name}} - {{servicios[1].cost}}</a>
+      <a href="#" @click="seleccionar(2)" class="list-group-item " v-bind:class="{active: servicios[2].isActive}">{{servicios[2].name}} - {{servicios[2].cost}}</a>
+      <a href="#" @click="seleccionar(3)" class="list-group-item " v-bind:class="{active: servicios[3].isActive}">{{servicios[3].name}} - {{servicios[3].cost}}</a>
+    </div>
+
+    <h1>Total: {{total}}</h1>
+  </section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script>
+    var demo = new Vue({
+        el: '#Problema4',
+      
+        data: {
+          total: 0,
+          servicios: [
+                {
+                    isActive: false,
+                    name: "HotDog",
+                    cost: 60
+                },
+                {
+                    isActive: false,
+                    name: "Hamburguesa",
+                    cost: 130
+                },
+                {
+                    isActive: false,
+                    name: "Papas",
+                    cost: 65
+                },
+                {
+                    isActive: false,
+                    name: "Pizza",
+                    cost: 230
+                },
+          ]
+        },
+      
+        methods: {
+          seleccionar: function(num) {
+            this.servicios[num].isActive = !this.servicios[num].isActive;
+            if (this.servicios[num].isActive) {
+                this.total += this.servicios[num].cost;
+            } else {
+                this.total -= this.servicios[num].cost;
+            }
+          }
+        }
+    })
+</script>
+</body>
+</html>

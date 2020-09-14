@@ -1,0 +1,84 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad Vue</title>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="./index.html">Home</a>
+                    <a class="nav-item nav-link" href="./project.html">Projects</a>
+                    <a class="nav-item nav-link" href="./services.html">Services</a>
+                    <a class="nav-item nav-link" href="#">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <form id="Problema3" v-cloak>
+        <div class="row">
+            <div class="col-2 offset-3">
+                <button type="button" class="btn btn-info" v-bind:class="{ 'active': layout == 'listado'}" v-on:click="layout = 'listado'">Listado</button>
+            </div>
+            <div class="col-2 offset-3">
+                <button type="button" class="btn btn-info"  v-bind:class="{ 'active': layout == 'grid'}" v-on:click="layout = 'grid'">Grid</button>
+            </div>
+        </div>    
+        <ul v-if="layout == 'grid'" class="grid">
+            <li v-for="a in articles">
+                <a v-bind:href="a.url" target="_blank"><img v-bind:src="a.foto" /></a>
+            </li>
+        </ul>
+    
+        <ul v-if="layout == 'listado'" class="listado">
+            <li v-for="a in articles">
+                <a v-bind:href="a.url" target="_blank"><img v-bind:src="a.foto" /></a>
+                <p>{{a.titulo}}</p>
+            </li>
+        </ul>
+    
+    </form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script>
+    var demo = new Vue({
+        el: '#Problema3',
+        data: {
+                layout: 'listado',
+        articles: [{
+            "titulo": "Labrador",
+            "url": "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2019/12/03202400/Yellow-Labrador-Retriever.jpg",
+            "foto": "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2019/12/03202400/Yellow-Labrador-Retriever.jpg"
+        },
+        {
+            "titulo": "Husky",
+            "url": "https://www.almanimal.com/wp-content/uploads/2020/01/husky-1000x600.jpeg",
+            "foto": "https://www.almanimal.com/wp-content/uploads/2020/01/husky-1000x600.jpeg"
+        },
+        {
+            "titulo": "Golden Retriever",
+            "url": "https://t1.ea.ltmcdn.com/es/razas/5/5/0/img_55_golden-retriever-o-cobrador-dorado_0_orig.jpg",
+            "foto": "https://t1.ea.ltmcdn.com/es/razas/5/5/0/img_55_golden-retriever-o-cobrador-dorado_0_orig.jpg"
+        },
+        {
+            "titulo": "Pug",
+            "url": "https://www.petdarling.com/articulos/wp-content/uploads/2015/05/raza-pug-carlino.jpg?width=1200&enable=upscale",
+            "foto": "https://www.petdarling.com/articulos/wp-content/uploads/2015/05/raza-pug-carlino.jpg?width=1200&enable=upscale"
+        },
+        ]
+        }
+});
+</script>
+</body>
+</html>

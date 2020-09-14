@@ -1,0 +1,48 @@
+[v-cloak] {
+    display: none;
+  }
+  body{
+    text-align:center;
+}
+  ul.listado{
+          list-style: none;
+          width: 500px;
+          margin: 0 auto;
+          text-align: left;
+  }
+  
+  ul.listado li{
+          border-bottom: 1px solid rgb(0, 0, 0);
+          padding: 10px;
+          overflow: hidden;
+  }
+  
+  ul.listado li img{
+          width:150px;
+          height:150px;
+          float:left;
+          border:none;
+          margin-right: 20px;
+  }
+  
+  ul.listado li p{
+          margin-left: 100px;
+  }
+  
+  ul.grid{
+          list-style: none;
+          width: 570px;
+          margin: 0 auto;
+          text-align: left;
+  }
+  
+  ul.grid li{
+          padding: 2px;
+          float:left;
+  }
+  
+  ul.grid li img{
+          width:250px;
+          height:250px;
+          display:block;
+    }
